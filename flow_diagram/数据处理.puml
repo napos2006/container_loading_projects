@@ -1,0 +1,16 @@
+@startuml
+title 数据处理
+
+rectangle "集装箱装载优化系统" {
+    (用户交互模块) as UI
+    (装箱/打垛算法模块) as Algorithm
+    (数据库模块) as Database
+}
+
+UI --> Algorithm : 传递输入数据
+Algorithm --> Database : 读取必要数据（历史文件、集装箱尺寸等）
+Database --> Algorithm : 返回数据
+Algorithm --> Algorithm : 计算最优装载方案
+Algorithm --> UI : 返回计算结果
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+title 用户输入数据
+
+actor 用户 as User
+rectangle "集装箱装载优化系统" {
+    (用户交互模块) as UI
+    (数据验证) as Validation
+}
+
+User --> UI : 输入货物信息、托盘信息、集装箱信息
+UI --> Validation : 验证输入数据
+Validation --> UI : 返回验证结果
+UI --> User : 显示验证结果（成功/失败）
+
+@enduml

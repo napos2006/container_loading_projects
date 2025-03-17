@@ -1,0 +1,19 @@
+@startuml
+title 结果输出
+
+actor 用户 as User
+rectangle "集装箱装载优化系统" {
+    (用户交互模块) as UI
+    (3D可视化) as Visualization
+    (动态仿真) as Simulation
+    (报表生成) as Reporting
+}
+
+UI --> Visualization : 生成3D可视化结果
+UI --> Simulation : 生成动态仿真结果
+UI --> Reporting : 生成报表
+Visualization --> User : 展示3D可视化
+Simulation --> User : 展示动态仿真
+Reporting --> User : 展示报表
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+title 第一层数据流程图(Level 1)
+
+actor 用户 as User
+database 数据库 as Database
+
+rectangle "集装箱装载优化系统" {
+    rectangle "用户交互模块" as UI {
+        (接收输入) as Input
+        (展示结果) as Output
+        Input --> Output : 传递数据
+    }
+
+    rectangle "装箱/打垛算法模块" as Algorithm {
+        (计算最优装载方案) as Calculation
+        (支持打花垛功能) as Stability
+        Calculation --> Stability : 确保货物稳固性
+    }
+
+    rectangle "动态仿真模块" as Simulation {
+        (生成动态仿真动画) as Animation
+        (支持播放、暂停等) as Control
+        Animation --> Control : 提供交互功能
+    }
+
+    UI --> Algorithm : 传递输入数据
+    Algorithm --> UI : 返回计算结果
+    UI --> Simulation : 传递计算结果
+    Simulation --> UI : 返回动态仿真结果
+}
+
+User --> UI : 输入货物信息、操作
+UI --> User : 展示3D可视化、动态仿真、报表
+UI --> Database : 查询/存储数据
+Database --> UI : 返回数据
+
+@enduml

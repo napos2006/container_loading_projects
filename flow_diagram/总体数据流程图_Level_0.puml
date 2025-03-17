@@ -1,0 +1,20 @@
+@startuml
+
+title 顶层数据流程图(Level 0)
+
+actor 用户 as User
+database 数据库 as Database
+
+rectangle "集装箱装载优化系统" {
+    (用户交互模块) as UI
+    (装箱/打垛算法模块) as Algorithm
+    UI --> Algorithm : 传递输入数据
+    Algorithm --> UI : 返回计算结果
+}
+
+User --> UI : 输入货物信息、操作
+UI --> User : 展示3D可视化、动态仿真、报表
+UI --> Database : 查询/存储数据
+Database --> UI : 返回数据
+
+@enduml
